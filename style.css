@@ -1,3 +1,12 @@
+/*  
+    Add background image and set the container div. 
+    - The goal here is a background image on a website that covers the entire browser window at all times.
+*/
+
+body {
+    background: url("./images/background.jpeg") no-repeat center center fixed;
+    background-size: cover;
+}
 /*
     Flex display for the container which holds all objects in this page
 */
@@ -13,7 +22,7 @@
     -o-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: white;
-    opacity: 0.6;
+    opacity: 0.9;
     padding: 5px;
     z-index: 100;
 
