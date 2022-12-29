@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find User</title>
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- page left part -->
+        <div class="result_card card">
+            <fieldset class="fieldset">
+                <legend class="header">Result</legend>
+                <div class="user_result"> 
+                    <div class="photo"></div>
+                    <div class="username"></div>
+                    <div class="blog"></div>
+                    <div class="location"></div>
+                    <div class="bio"></div>
+                </div>
+                <div class="addRes"></div>
+                <div class="storageInfo"></div>
+            </fieldset>
+        </div>
+        <!-- page right part -->
+        <div class="form_card card">
+            <form class="form_card_content">
+                <fieldset class="fieldset">
+                    <legend class="header">Find User</legend>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" maxlength="255" pattern="[A-Za-z ]+" required>
+                    <button class="submit button">submit</button><br>
+                </fieldset>
+            </form>
+            <div class="action_result"></div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
