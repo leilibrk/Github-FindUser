@@ -1,3 +1,4 @@
+const APIURL = "https://api.github.com/users/";
 const nameInput = document.querySelector('#name');
 const submitButton = document.querySelector('.submit');
 const userPhoto = document.querySelector('.photo');
@@ -12,6 +13,7 @@ const storageInfo = document.querySelector('.storageInfo');
   This function is an event handler for pressing the submit button. First, it checks that if the username exists in the local storage,
   it will call the userInStorage function. Else, it will send a request to get the user data and then adds the username and userdata to 
   local storage for future fetches and call the displayUser function. If the user is not found, it will call the userNotFound function.
+  If there is a problem in connecting to server, it will call the connectionErr function.
 */
 async function getUser(e) {
     let uname = nameInput.value;
@@ -19,7 +21,7 @@ async function getUser(e) {
     try {
         existedData = await JSON.parse(window.localStorage.getItem(uname))
         if (existedData == null){
-          let api = `https://api.github.com/users/${uname}`
+          let api = APIURL + uname
           let response = await fetch(api)
           let userData = await response.json()
           window.localStorage.setItem(uname, JSON.stringify(userData));
@@ -29,16 +31,32 @@ async function getUser(e) {
           }
           else if (response.status == 200){
               displayUser(userData)
+              // getRepos(uname)
          } 
         }
         else {
-          userInStorage(existedData);
+          userInStorage(existedData)
         }
         
     }
     catch(err){
-        console.log(err)
+        connectionErr()
+        
     }
+}
+// async function getRepos(username) {
+//   const resp = await fetch(APIURL + username + "/repos");
+//   const respData = await resp.json();
+//   repos.sort()
+
+// }
+/*
+  This function is used when there is a connection error.
+*/
+function connectionErr(){
+  addRes.style.display = 'block';
+  user_result.style.display = 'none';
+  addRes.innerHTML = "<span style='color:#ff0000;text-align: center'> Connection Error </span>"
 }
 /*
   This function is used when a request has been send before to bring the user data from the local storage.
