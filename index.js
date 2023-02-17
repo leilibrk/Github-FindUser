@@ -129,4 +129,4 @@ function displayUser(data){
 }
 
 submitButton.addEventListener('click', getUser);
-// window.localStorage.clear()
+window.localStorage.clear()
